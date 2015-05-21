@@ -20,7 +20,9 @@ class RPS < Sinatra::Base
     @player = Player.new
     @player.choose params[:choice]
     @computer = Computer.new
-    erb @player.vs(@computer)
+    @result = @@game.result @player, @computer
+    erb @result
+    # erb @player.vs(@computer)
   end
 
   # start the server if ruby file executed directly
