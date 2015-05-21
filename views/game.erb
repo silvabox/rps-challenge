@@ -1,4 +1,5 @@
 <h2>Hello <%= @name %>!<h2>
+<h2>Hello <%= session[:name] %>!<h2>
 <form action="/game" method='post'>
   <input type="submit" name="choice" value="Rock">
   <input type="submit" name="choice" value="Paper">

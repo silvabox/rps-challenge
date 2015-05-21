@@ -1,21 +1,6 @@
+require_relative 'game'
+
 class Player
-  RULES = {
-    rock: {
-      rock: :draw,
-      paper: :lose,
-      scissors: :win
-    },
-    paper: {
-      rock: :win,
-      paper: :draw,
-      scissors: :lose
-    },
-    scissors: {
-      rock: :lose,
-      paper: :win,
-      scissors: :draw
-    }
-  }
 
   attr_reader :choice
 
@@ -24,7 +9,7 @@ class Player
   end
 
   def vs other
-    fail 'Invalid choice' unless RULES[@choice]
-    RULES[@choice][other.choice]
+    fail 'Invalid choice' unless Game::RULES[@choice]
+    Game::RULES[@choice][other.choice]
   end
 end

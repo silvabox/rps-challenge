@@ -3,13 +3,16 @@ require './lib/computer'
 require './lib/player'
 
 class RPS < Sinatra::Base
+
+  @@game = Game.new
+  
   get '/' do
     erb :index
   end
 
   post '/game/new' do
     session[:name] = params[:name]
-    @name = session[:name]
+    # @name = session[:name]
     erb :game
   end
 
