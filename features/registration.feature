@@ -9,7 +9,7 @@ Feature: Registration
     Then I should see "Please enter your name"
 
 
-  Scenario:  User registers
+  Scenario:  User registers and sees their name
     Given I am on the home page
     When I enter "Ben" in "name"
     And click "Submit"
