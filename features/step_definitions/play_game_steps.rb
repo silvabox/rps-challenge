@@ -2,6 +2,10 @@ Given(/^I am on the home page$/) do
   visit '/'
 end
 
+Then(/^I should see Please enter your name$/ do
+
+end
+
 Then(/^I should see "([^"]*)"$/) do |content|
   expect(page).to have_content content
 end

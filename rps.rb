@@ -11,8 +11,8 @@ class RPS < Sinatra::Base
   end
 
   post '/game/new' do
-    session[:name] = params[:name]
-    # @name = session[:name]
+    # session[:name] = params[:name]
+    @name = session[:name]
     erb :game
   end
 

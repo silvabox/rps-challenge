@@ -10,6 +10,7 @@ class Player
 
   def vs other
     fail 'Invalid choice' unless Game::RULES[@choice]
-    Game::RULES[@choice][other.choice]
+    
+    outcomes = Game::RULES[@choice][other.choice]
   end
 end
