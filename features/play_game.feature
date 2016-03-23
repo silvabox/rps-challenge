@@ -8,21 +8,21 @@ Feature: playing the game
     Given I am registered as "Ben"
     And the computer will choose "Scissors"
     When I choose "Rock"
-    Then I should see "Computer chose Scissors"
+    Then I should see "You chose Rock, which beats Scissors"
     And I should win the game
 
 
-  Scenario: User can tie the game
+  Scenario: User can draw the game
     Given I am registered as "Ben"
     And the computer will choose "Paper"
     When I choose "Paper"
-    Then I should see "Computer chose Paper"
-    And I should tie the game
+    Then I should see "Computer chose Paper too!"
+    And I should draw the game
 
 
   Scenario: User can lose the game
     Given I am registered as "Ben"
     And the computer will choose "Rock"
     When I choose "Scissors"
-    Then I should see "Computer chose Rock"
+    Then I should see "Computer chose Rock, which beats Scissors"
     And I should lose the game

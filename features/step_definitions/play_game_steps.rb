@@ -16,16 +16,16 @@ Given(/^the computer will choose "([^"]*)"$/) do |choice|
   allow_any_instance_of(Computer).to receive(:weapon).and_return Weapon[choice]
 end
 
-Given(/^I choose "(Rock|Paper|Scissors)"$/) do |choice|
-  click_on choice
+Given(/^I choose "(Rock|Paper|Scissors|Lizard|Spock)"$/) do |choice|
+  click_on choice.downcase
 end
 
 Then(/^I should win the game$/) do
   expect(page).to have_content 'You win!'
 end
 
-Then(/^I should tie the game$/) do
-  expect(page).to have_content "It's a tie!"
+Then(/^I should draw the game$/) do
+  expect(page).to have_content "It's a draw!"
 end
 
 Then(/^I should lose the game$/) do

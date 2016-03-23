@@ -9,7 +9,7 @@ class Weapon
     end
 
     def [](name)
-      weapons[name]
+      weapons[name.to_s.downcase.to_sym]
     end
 
     private

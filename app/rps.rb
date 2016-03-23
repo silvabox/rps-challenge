@@ -3,17 +3,25 @@ require './lib/computer'
 require './lib/player'
 
 class RPS < Sinatra::Base
+  enable :sessions
+
   get '/' do
     erb :index
   end
 
-  post '/game/new' do
+  post '/game' do
     session[:name] = params[:name]
-    @name = session[:name]
-    erb :game
+    puts params[:name]
+    redirect :play
   end
 
-  post '/game' do
+  get '/play' do
+    redirect '/' unless session[:name]
+    @name = session[:name]
+    erb :play
+  end
+
+  post '/play' do
     @player = Player.new
     @player.choose Weapon[params[:choice]]
     @computer = Computer.new

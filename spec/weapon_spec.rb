@@ -13,7 +13,7 @@ describe Weapon do
     end
 
     it 'allows selection of weapon by name' do
-      expect(Weapon[:rock]).to be Weapon.rock
+      expect(Weapon['Rock']).to be Weapon.rock
     end
 
     it 'returns nil for an invalid weapon name' do
