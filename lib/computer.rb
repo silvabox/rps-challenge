@@ -1,9 +1,15 @@
-require_relative 'game'
+require_relative 'weapon'
 
 class Computer
-  attr_reader :choice
+  def initialize(weapons = Weapon.to_a)
+    @weapons = weapons
+  end
 
-  def initialize
-    @choice = Game.moves.sample
+  def choose
+    @weapon = @weapons.sample
+  end
+
+  def weapon
+    @weapon ||= choose
   end
 end

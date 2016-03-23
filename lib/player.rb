@@ -1,15 +1,13 @@
-require_relative 'game'
-
 class Player
 
-  attr_reader :choice
+  attr_reader :weapon
 
-  def choose val
-    @choice = val.downcase.to_sym
+  def choose weapon
+    @weapon = weapon
   end
 
   def vs other
-    fail 'Invalid choice' unless Game::RULES[@choice]
-    Game::RULES[@choice][other.choice]
+    return :draw if @weapon == other.weapon
+    @weapon.beats?(other.weapon) ? :win : :lose
   end
 end

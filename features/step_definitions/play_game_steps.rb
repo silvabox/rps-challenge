@@ -13,7 +13,7 @@ Given(/^I am registered as "([^"]*)"$/) do |name|
 end
 
 Given(/^the computer will choose "([^"]*)"$/) do |choice|
-  allow_any_instance_of(Computer).to receive(:choice).and_return choice.downcase.to_sym
+  allow_any_instance_of(Computer).to receive(:weapon).and_return Weapon[choice]
 end
 
 Given(/^I choose "(Rock|Paper|Scissors)"$/) do |choice|

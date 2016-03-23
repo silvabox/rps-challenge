@@ -15,7 +15,7 @@ class RPS < Sinatra::Base
 
   post '/game' do
     @player = Player.new
-    @player.choose params[:choice]
+    @player.choose Weapon[params[:choice]]
     @computer = Computer.new
     erb @player.vs(@computer)
   end
