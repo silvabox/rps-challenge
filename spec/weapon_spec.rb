@@ -19,6 +19,10 @@ describe Weapon do
     it 'returns nil for an invalid weapon name' do
       expect(Weapon[:tomato]).not_to be
     end
+
+    it 'returns all weapons' do
+      expect(Weapon.all).to eq Weapon.to_a
+    end
   end
 
   describe Weapon.rock do

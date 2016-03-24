@@ -1,5 +1,3 @@
-#Understands the rules of Rock, Paper, Scissors
-
 class Weapon
   class << self
     include Enumerable
@@ -10,6 +8,10 @@ class Weapon
 
     def [](name)
       weapons[name.to_s.downcase.to_sym]
+    end
+
+    def all
+      @weapons.values
     end
 
     private
