@@ -1,26 +1,4 @@
 class Weapon
-  class << self
-    include Enumerable
-
-    def each(&block)
-      weapons.values.each(&block)
-    end
-
-    def [](name)
-      weapons[name.to_s.downcase.to_sym]
-    end
-
-    def all
-      @weapons.values
-    end
-
-    private
-
-    def weapons
-      @weapons ||= {}
-    end
-  end
-
   def initialize(name, *beats)
     @beats = beats
     @name = name.to_s
@@ -47,22 +25,42 @@ class Weapon
 
   def define_helper(name)
     instance = self
-    self.class.singleton_class.class_eval do
-      define_method name do
-        instance
-      end
+    self.class.define_singleton_method name do
+      instance
     end
   end
 
-  def self.create(name, beats = [], loses_to = [])
-    weapon = Weapon.new(name, *beats)
-    weapons.store(name.to_sym, weapon)
-    if loses_to.is_a?(Weapon)
-      loses_to.send(:beats, weapon)
-    else
+  class << self
+    include Enumerable
+
+    def each(&block)
+      weapons.values.each(&block)
+    end
+
+    def [](name)
+      weapons[name.to_s.downcase.to_sym]
+    end
+
+    def all
+      @weapons.values
+    end
+
+    def create(name, beats = [], loses_to = [])
+      weapon = Weapon.new(name, *beats)
+      weapons.store(name.to_sym, weapon)
+      assign_loses_to(weapon, *loses_to)
+      weapon
+    end
+
+    private
+
+    def weapons
+      @weapons ||= {}
+    end
+
+    def assign_loses_to(weapon, *loses_to)
       loses_to.each { |other| other.send(:beats, weapon) }
     end
-    weapon
   end
 
   rock = create(:rock)
